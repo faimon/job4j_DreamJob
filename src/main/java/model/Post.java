@@ -9,6 +9,11 @@ public class Post {
     private String description;
     private LocalDate date;
 
+    public Post(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Post(int id, String name, String description, LocalDate date) {
         this.id = id;
         this.name = name;
