@@ -4,11 +4,26 @@ import java.util.Objects;
 
 public class Candidate {
     private int id;
+    private String photoPath;
     private String name;
 
     public Candidate(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Candidate(int id, String photoPath, String name) {
+        this.id = id;
+        this.photoPath = photoPath;
+        this.name = name;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 
     public int getId() {

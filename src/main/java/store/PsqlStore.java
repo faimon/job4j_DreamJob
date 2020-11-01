@@ -73,7 +73,8 @@ public class PsqlStore implements Store {
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    candidates.add(new Candidate(it.getInt("id"), it.getString("name")));
+                    candidates.add(new Candidate(it.getInt("id"), it.getString("photo_path"),
+                            it.getString("name")));
                 }
             }
         } catch (Exception e) {
@@ -180,11 +181,35 @@ public class PsqlStore implements Store {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                candidate = new Candidate(rs.getInt("id"), rs.getString("name"));
+                candidate = new Candidate(rs.getInt("id"), rs.getString("photo_path"),
+                        rs.getString("name"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return candidate;
+    }
+
+    @Override
+    public void savePhoto(String photoId) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET photo_path = ? WHERE id = ?")) {
+            ps.setString(1, photoId);
+            ps.setInt(2, Integer.parseInt(photoId));
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteCandidate(int id) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("DELETE FROM candidate WHERE id = ?")) {
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
