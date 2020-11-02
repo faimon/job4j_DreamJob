@@ -19,6 +19,7 @@ public class CandidateServlet extends HttpServlet {
         for (File name : new File("images").listFiles()) {
             images.add(name.getName());
         }
+        req.setAttribute("user", req.getSession().getAttribute("user"));
         req.setAttribute("images", images);
         req.setAttribute("candidates", PsqlStore.instOf().findAllCandidates());
         req.getRequestDispatcher("candidate/candidates.jsp").forward(req, resp);
