@@ -26,7 +26,7 @@ public class CandidateServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         Candidate newCandidate = new Candidate(Integer.parseInt(req.getParameter("id")),
                 req.getParameter("name"));

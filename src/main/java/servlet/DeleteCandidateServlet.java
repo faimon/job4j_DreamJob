@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 public class DeleteCandidateServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int candidateId = Integer.parseInt(req.getParameter("id"));
         PsqlStore.instOf().deleteCandidate(candidateId);
         Files.deleteIfExists(Paths.get("images" + File.separator + candidateId));
