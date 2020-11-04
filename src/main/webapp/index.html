@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script> function validate() {
+        let first = $('#firstname').val();
+        let second = $('#lastname').val();
+        let third = $('#description').val();
+        if (first === '') {
+            alert("Заполните поле имя");
+        }
+        if (second === '') {
+            alert("Заполните поле фамилия");
+        }
+        if (!($('input[name="gender"]').is(':checked'))) {
+            alert('Выберите пол');
+        }
+        if (third === '') {
+            alert("Заполните поле описания");
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -14,8 +32,8 @@
     <h2>Введите данные:</h2>
     <form action="/action_page.php">
         <div class="form-group">
-            <label for="name">Имя:</label>
-            <input type="name" class="form-control" id="name" placeholder="Введите имя" name="name">
+            <label for="firstname">Имя:</label>
+            <input type="name" class="form-control" id="firstname" placeholder="Введите имя" name="name">
         </div>
 
         <div class="form-group">
@@ -23,15 +41,15 @@
             <input type="lastname" class="form-control" id="lastname" placeholder="Введите фамилию" name="lastname">
         </div>
         <div class="checkbox">
-            <label for="name">Пол:</label>
-            <label><input type="radio" name="gender"> Мужской</label>
-            <label><input type="radio" name="gender"> Женский</label>
+            <label for="gender1">Пол:</label>
+            <label><input type="radio" name="gender" id="gender1"> Мужской</label>
+            <label><input type="radio" name="gender" id="gender2"> Женский</label>
         </div>
         <form action="textarea1.php" method="post">
             <p><b>Описание:</b></p>
-            <p><textarea rows="5" cols="40" name="text"></textarea></p>
+            <p><textarea rows="5" cols="40" name="text" id="description"></textarea></p>
         </form>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" onclick="validate()">Submit</button>
     </form>
 </div>
 <div class="container">
