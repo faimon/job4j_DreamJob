@@ -73,29 +73,8 @@
         <servlet-name>RegServlet</servlet-name>
         <url-pattern>/reg.do</url-pattern>
     </servlet-mapping>
-
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
-
-    <servlet>
-        <servlet-name>GreetingServlet</servlet-name>
-        <servlet-class>exampleServlets.GreetingServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>GreetingServlet</servlet-name>
-        <url-pattern>/greet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>JsonServlet</servlet-name>
-        <servlet-class>exampleServlets.JsonServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>JsonServlet</servlet-name>
-        <url-pattern>/json</url-pattern>
-    </servlet-mapping>
 </web-app>
