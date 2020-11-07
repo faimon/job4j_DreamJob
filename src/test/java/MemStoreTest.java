@@ -36,6 +36,7 @@ public class MemStoreTest {
         HttpServletResponse resp = mock(HttpServletResponse.class);
         when(req.getParameter("name")).thenReturn("Ivan");
         when(req.getParameter("id")).thenReturn("1");
+        when(req.getParameter("city")).thenReturn("1");
         new CandidateServlet().doPost(req, resp);
         assertThat(memStore.findAllCandidates().iterator().next().getName(), is("Ivan"));
     }
@@ -48,7 +49,7 @@ public class MemStoreTest {
         Mockito.when(PsqlStore.instOf()).thenReturn(memStore);
         HttpServletRequest req = mock(HttpServletRequest.class);
         HttpServletResponse resp = mock(HttpServletResponse.class);
-        memStore.save(new Candidate(1, "Vasya"));
+        memStore.save(new Candidate(1, "Vasya", 0));
         when(req.getParameter("id")).thenReturn("1");
         new DeleteCandidateServlet().doGet(req, resp);
         assertThat(memStore.findAllCandidates().size(), is(0));

@@ -19,7 +19,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-
+    <script>
+        function validate() {
+            if ($('#login').val() === '' || $('#email').val() === '' || $('#password').val() === '') {
+                alert('Заполните все поля')
+                return false;
+            }
+        }
+    </script>
     <title>Работа мечты</title>
 </head>
 <body>
@@ -34,17 +41,18 @@
                 <form action="<%=request.getContextPath()%>/reg.do" method="post">
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" class="form-control" name="login">
+                        <input type="text" class="form-control" name="login" id="login">
                     </div>
                     <div class="form-group">
                         <label>Почта</label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" name="password">
+                        <input type="text" class="form-control" name="password" id="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    <button type="submit" class="btn btn-primary" onclick="return validate()">Зарегистрироваться
+                    </button>
                 </form>
             </div>
         </div>

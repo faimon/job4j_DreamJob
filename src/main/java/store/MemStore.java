@@ -1,6 +1,7 @@
 package store;
 
 import model.Candidate;
+import model.City;
 import model.Post;
 import model.User;
 
@@ -36,6 +37,11 @@ public class MemStore implements Store {
 
     public Collection<Candidate> findAllCandidates() {
         return candidates.values();
+    }
+
+    @Override
+    public Collection<City> findAllCities() {
+        return null;
     }
 
     @Override

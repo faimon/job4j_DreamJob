@@ -36,6 +36,11 @@
         <servlet-name>RegServlet</servlet-name>
         <servlet-class>servlet.RegServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CityServlet</servlet-name>
+        <servlet-class>servlet.CityServlet</servlet-class>
+    </servlet>
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>filter.AuthFilter</filter-class>
@@ -73,6 +78,11 @@
         <servlet-name>RegServlet</servlet-name>
         <url-pattern>/reg.do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CityServlet</servlet-name>
+        <url-pattern>/cities</url-pattern>
+    </servlet-mapping>
+
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
         <url-pattern>*.do</url-pattern>

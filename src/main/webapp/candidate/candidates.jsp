@@ -60,6 +60,7 @@
                     <tr>
                         <th scope="col">Действия</th>
                         <th scope="col">Имя кандидата</th>
+                        <th scope="col">Город</th>
                         <th scope="col">Скачать изображение</th>
                         <th scope="col">Фотография кандидата</th>
                     </tr>
@@ -76,6 +77,7 @@
                                 </a>
                             </td>
                             <td><c:out value="${candidate.name}"/></td>
+                            <td><c:out value="${cities[candidate.cityId].name}"/></td>
                             <td><a href="<c:url value='/download?name=${candidate.photoPath}'/>">Download</a></td>
                             <td>
                                 <img src="<c:url value='/download?name=${candidate.photoPath}'/>" width="100px"

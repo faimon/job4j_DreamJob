@@ -1,6 +1,7 @@
 package store;
 
 import model.Candidate;
+import model.City;
 import model.Post;
 import model.User;
 
@@ -10,6 +11,8 @@ public interface Store {
     Collection<Post> findAllPosts();
 
     Collection<Candidate> findAllCandidates();
+
+    Collection<City> findAllCities();
 
     Collection<User> findAllUsers();
 

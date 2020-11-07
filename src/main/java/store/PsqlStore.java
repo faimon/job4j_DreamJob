@@ -2,6 +2,7 @@ package store;
 
 
 import model.Candidate;
+import model.City;
 import model.Post;
 import model.User;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -75,13 +76,30 @@ public class PsqlStore implements Store {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
                     candidates.add(new Candidate(it.getInt("id"), it.getString("photo_path"),
-                            it.getString("name")));
+                            it.getString("name"), it.getInt("city_id")));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return candidates;
+    }
+
+    @Override
+    public Collection<City> findAllCities() {
+        List<City> cities = new ArrayList<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM city")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    cities.add(new City(it.getInt("id"), it.getString("name")));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cities;
     }
 
     @Override
@@ -170,9 +188,10 @@ public class PsqlStore implements Store {
 
     private Candidate createCandidate(Candidate candidate) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("INSERT INTO candidate(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO candidate(name, city_id) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, candidate.getName());
+            ps.setInt(2, candidate.getCityId());
             ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
@@ -221,7 +240,7 @@ public class PsqlStore implements Store {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 candidate = new Candidate(rs.getInt("id"), rs.getString("photo_path"),
-                        rs.getString("name"));
+                        rs.getString("name"), rs.getInt("city_id"));
             }
         } catch (Exception e) {
             e.printStackTrace();
