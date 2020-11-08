@@ -51,6 +51,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary" onclick="return validate()">Войти</button>
                 </form>
+                <br>
                 <a class="nav-link" href="<%=request.getContextPath()%>/reg.do">Регистрация</a>
                 <c:if test="${error != null}">
                     <div style="color:red;">Неверный email или пароль</div>

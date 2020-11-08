@@ -76,8 +76,9 @@
             <div class="card-body">
                 <form action="<%=request.getContextPath()%>/posts.do?id=<%=post.getId()%>" method="post">
                     <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" class="form-control" name="name" value="<%=post.getName()%>" id="firstname">
+                        <label> Описание вакансии </label>
+                            <input type="text" class="form-control" name="name" value="<%=post.getName()%>"
+                                   id="firstname">
                     </div>
                     <button type="submit" class="btn btn-primary" onclick="return validate()">Сохранить</button>
                 </form>

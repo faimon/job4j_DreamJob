@@ -1,6 +1,6 @@
 package servlet;
 
-import images.UploadImage;
+import upload.UploadImage;
 import store.PsqlStore;
 
 import javax.servlet.RequestDispatcher;

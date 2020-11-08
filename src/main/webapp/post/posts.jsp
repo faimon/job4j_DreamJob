@@ -56,7 +56,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Названия</th>
+                        <th scope="col">Список вакансий</th>
                     </tr>
                     </thead>
                     <tbody>
