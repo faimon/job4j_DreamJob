@@ -23,6 +23,10 @@
 
 ![GitHub Logo](https://github.com/faimon/job4j_dreamJob/blob/master/screenshots/AllPosts.png?raw=true)
 
-Пользователь может добавить вакансию:
+Пользователь может добавить кандидата:
 
 ![GitHub Logo](https://github.com/faimon/job4j_dreamJob/blob/master/screenshots/addCandidate.png?raw=true)
+
+Добавить его фотографию:
+
+![GitHub Logo](https://github.com/faimon/job4j_dreamJob/blob/master/screenshots/uploadImage.png?raw=true)
